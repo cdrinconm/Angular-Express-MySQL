@@ -1,80 +1,62 @@
+<div class="col-1 offset-11">
+  <button class="btn btn-sm btn-danger" (click)="cerrarSesion()">
+    Cerrar Sesion
+  </button>
+</div>
 <div class="container mt-5">
-    <h2 class="mb-4 text-center">USUARIOS</h2>
+  <h2 class="mb-4 text-center">USUARIOS</h2>
 
-    <form (ngSubmit)="guardarUsuario()" class="card p-4 shadow-sm mb-4">
-        <div class="row g-3">
-            <div class="col-md-5">
-                <input 
-                    type="text" 
-                    class="form-control" 
-                    
-                    name="usuario" 
-                    placeholder="Usuario"
-                    required>
-            </div>
-            <div class="col-md-5">
-                <input 
-                    type="text" 
-                    class="form-control" 
-                    
-                    name="contrasena" 
-                    placeholder="Contraseña"
-                    required>
-            </div>
-            <div class="col-md-5">
-                <input 
-                    type="text" 
-                    class="form-control" 
-                    
-                    name="email" 
-                    placeholder="Email"
-                    required>
-            </div>
+  <form (ngSubmit)="guardarUsuario()" class="card p-4 shadow-sm mb-4">
+    <div class="row g-3">
+      <div class="col-6 offset-3">
+        <input type="text" class="form-control" [(ngModel)]="usuario.usuario" name="usuario" placeholder="Usuario"
+          required>
+      </div>
+      <div class="col-6 offset-3">
+        <input type="text" class="form-control" [(ngModel)]="usuario.contrasena" name="contrasena"
+          placeholder="Contraseña" required>
+      </div>
+      <div class="col-6 offset-3">
+        <input type="text" class="form-control" [(ngModel)]="usuario.email" name="email" placeholder="Email" required>
+      </div>
 
-            <div class="col-md-2 d-grid gap-2">
-                <button 
-                    type="submit" 
-                    class="btn btn-primary">
-                        {{this.editar ? 'Actualizar' : 'Agregar'}}
-                </button>
-                <button 
-                    type="button" 
-                    class="btn btn-secondary" 
-                    *ngIf="editar" 
-                    (click)="reiniciarFormulario()">
-                        Cancelar
-                </button>
-            </div>
-        </div>
-    </form>
-    <table class="table table-bordered table-hover shadow-sm">
-        <thead class="table-light">
-            <tr>
-                <th>#</th>
-                <th>Usuario</th>
-                <th>Contraseña</th>
-                <th>Email</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let u of usuarios; let i = index">
-                <td>{{u.id}}</td>
-                <td>{{u.usuario}}</td>
-                <td>{{u.contrasena}}</td>
-                <td>{{u.email}}</td>
-                <td>
-                    <button
-                        class="btn btn-sm btn-warning me-2"
-                        (click)="editarUsuario(u)">
-                            Editar
-                    </button>
-                    <button
-                        class="btn btn-sm btn-danger"
-                        (click)="eliminarUsuario(u.id!)">
-                            Eliminar
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+      <div class="col-4 offset-4 d-grid gap-2">
+        <button type="submit" class="btn btn-primary">
+          {{this.editar ? 'Actualizar' : 'Agregar'}}
+        </button>
+        <button type="button" class="btn btn-secondary" *ngIf="editar" (click)="reiniciarFormulario()">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </form>
+  <table class="table table-bordered table-hover shadow-sm">
+    <thead class="table-light">
+      <tr>
+        <th>#</th>
+        <th>Usuario</th>
+        <th>Contraseña</th>
+        <th>Email</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of usuarios; let i = index">
+        <td>{{u.id}}</td>
+        <td>{{u.usuario}}</td>
+        <td>{{u.contrasena}}</td>
+        <td>{{u.email}}</td>
+        <td>
+          <button class="btn btn-sm btn-warning me-2" (click)="editarUsuario(u)">
+            Editar
+            <i class="bi bi-pencil-square"></i>
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="eliminarUsuario(u.id!)">
+            Eliminar
+            <i class="bi bi-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>>

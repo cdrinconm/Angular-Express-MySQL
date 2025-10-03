@@ -1,4 +1,4 @@
-#DROP DATABASE db_fletx;
+--DROP DATABASE db_fletx;
 CREATE DATABASE db_fletx;
 
 USE db_fletx;
@@ -10,4 +10,4 @@ CREATE TABLE usuarios (
     email VARCHAR(50) NOT NULL
 );
 
-INSERT INTO usuarios (usuario, contrasena, email) VALUES ('admin', 'admin123', 'admin@gmail.com');
+--INSERT INTO usuarios (usuario, contrasena, email) VALUES ('admin', 'admin123', 'admin@gmail.com');

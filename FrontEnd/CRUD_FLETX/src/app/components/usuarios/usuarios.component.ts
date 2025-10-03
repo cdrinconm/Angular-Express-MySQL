@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { UsuarioService } from 'src/app/services/usuario.service';
-import { Usuario } from 'src/app/models/usuario';
+import { UsuarioService } from 'src/app/services/usuario/usuario.service';
+import { Usuario } from 'src/app/models/usuario/usuario';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuarios',
@@ -16,7 +17,7 @@ export class UsuariosComponent implements OnInit {
   editar: Boolean = false;
   isEditar: number | null = null;
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private usuarioService: UsuarioService, private router: Router) { }
 
   ngOnInit(): void {
     this.getUsuarios();
@@ -63,6 +64,11 @@ export class UsuariosComponent implements OnInit {
     this.usuario = { usuario: '', contrasena: '', email: ''};
     this.editar = false;
     this.isEditar = null;
+  }
+
+  cerrarSesion(){
+    localStorage.removeItem('Token');
+    this.router.navigate(['/login']);
   }
 
 }

@@ -1,0 +1,16 @@
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">INICIAR SESION</h2>
+  <form (ngSubmit)="ingresar()" class="row g-3 flex-column col-6 offset-3 card p-4 shadow-sm mb-4" >
+    <div class="col-auto">
+      <label for="inputPassword2" class="visually-hidden">Usuario</label>
+      <input type="text" class="form-control" placeholder="Usuario" [(ngModel)]="usuario" name="usuario" required>
+    </div>
+    <div class="col-auto">
+      <label for="inputPassword2" class="visually-hidden">Password</label>
+      <input type="password" class="form-control" placeholder="Password" [(ngModel)]="contrasena" name="contrasena" required>
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary mb-3">Ingresar</button>
+    </div>
+  </form>
+</div>>
